@@ -589,7 +589,7 @@ client.on('message', message => {
         let Support = message.guild.roles.find(`name`, "Support Team");
         message.member.addRole(Support);
         Room.sendEmbed(embed);
-    }
+}
 });
 
 
