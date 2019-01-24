@@ -460,6 +460,15 @@ ${serverQueue.songs.map(song => `**${++index} -** ${song.title}`).join('\n')}
 	return undefined;
 });
 
+client.on("message", (message) => {
+    if(message.content.startsWith(prefix+"gmail")) {
+        message.channel.send(JSON.stringify({
+            email: Math.random().toString(36).slice(4).trim()+"@gmail.com",
+            password: Math.random().toString(36).slice(4).trim()
+        }))
+    }
+})
+
 async function handleVideo(video, msg, voiceChannel, playlist = false) {
 	const serverQueue = queue.get(msg.guild.id);
 	console.log(video);
