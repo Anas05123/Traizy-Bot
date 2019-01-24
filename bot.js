@@ -567,7 +567,6 @@ client.on('message', message => {
     }
 });
 
-
 const adminprefix = "-v";
 const devs = ['349616310734553088','335027415619338240'];
 client.on('message', message => {
