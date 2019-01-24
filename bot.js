@@ -208,6 +208,7 @@ client.on("message", message => {
 ❖-support ~ سيرفر الدعم
 ❖-contact ~ ارسال اقتراح او لمراسلة صاحب البوت
 ❖-sug ~ إرسال إقتراح للسيرفر مطور بس يلزم تسوي روم إسمها : suggestion
+❖-apply ~ لكي تقدم على رتبة إدارة في السيرفر
 `)
    message.author.sendEmbed(embed)
     
@@ -244,7 +245,6 @@ client.on("message", message => {
 ❖-ct <name> ~ انشاء شات
 ❖-cv <name> ~ انشاء رووم فويس
 ❖-delet <name> ~ مسح الشات او الرووم فويس
-❖-accept <name> ~ قبول أي عضو و إعاطه رتبة support
 ❖-ccolors <number> ~ ينشا لك الوان مع كم الوان تبي
 `)
    message.author.sendEmbed(embed)
@@ -551,7 +551,7 @@ client.on('message', message => {
 var guilds = {};
 client.on('message',async message => {
  var prefix2 = '-';
-  if(message.content.startsWith(prefix2 + "تقديم")) {
+  if(message.content.startsWith(prefix2 + "apply")) {
  
 if(!message.channel.guild) return message.reply(' ');
  
