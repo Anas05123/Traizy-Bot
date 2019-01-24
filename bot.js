@@ -592,7 +592,6 @@ client.on('message', message => {
 }
 });
 
-
 const codes = {
     ' ': '   ',
     '0': '0⃣',
