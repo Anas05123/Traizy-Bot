@@ -573,25 +573,6 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 }
 });
 
-var prefix = '-';
-client.on('message', message => {
-    if (message.content.startsWith(prefix + 'accept')) {
-        if (message.author.bot) return;
-        if (!message.guild) return;
-        let  user  =  message.mentions.users.first();
-        if(!user)  return  message.channel.send("**  -  mention  a  member  **")
-        let Room = message.guild.channels.find(`name`, "results");
-        let embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setAuthor(user.username, user.avatarURL)
-        .setTitle('» [ :white_check_mark:  ] :: - `تم قبول العضو بنجاح ! واعطائه رتبة السبورت`')
-        .setThumbnail(message.author.avatarURL)
-        let Support = message.guild.roles.find(`name`, "Support Team");
-        message.member.addRole(Support);
-        Room.sendEmbed(embed);
-}
-});
-
 const codes = {
     ' ': '   ',
     '0': '0⃣',
