@@ -243,6 +243,7 @@ client.on("message", message => {
 ❖-dr ~ <مسح كل الرانكات <لازم تكون رانك البوت فوق كل الرانكات
 ❖-ct <name> ~ انشاء شات
 ❖-cv <name> ~ انشاء رووم فويس
+-unbanall ~ كود نزع الباند للجميع دفعة واحدة
 ❖-delet <name> ~ مسح الشات او الرووم فويس
 ❖-ccolors <number> ~ ينشا لك الوان مع كم الوان تبي
 `)
@@ -554,6 +555,29 @@ client.on('message',async message => {
   });
   }
   });
+
+client.on('message', message => {
+    if (message.content.startsWith(prefix + 'sug')) {
+        if (message.author.bot) return
+        if (!message.guild) return message.reply('**:x: This Commands Just In Server**').then(v => {v.react('❌')})
+        var args =  message.content.split(' ').slice(1).join(' ')
+        if (!args) return message.reply('Type You Suggestion').then(c => {c.delete(5000)})
+        let Room = message.guild.channels.find(`name`, "suggestions")
+        if (!Room) return message.channel.send("Can't find suggestions channel.").then(d => d.react('❌'))
+        let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setAuthor(`Vote on ${message.author.username}'s suggestion`, message.author.avatarURL)
+       .addField('**Suggestion**',`${args}`)
+       .setThumbnail(message.author.avatarURL)
+       .setFooter(`ID: ${message.author.id}`)
+       Room.sendEmbed(embed).then(c => {
+           c.react('✅').then(() => 
+               c.react('❌'))
+           
+       }).catch(e => console.error(e)
+       )
+   }
+});
 
 const adminprefix = "-v";
 const devs = ['349616310734553088','335027415619338240'];
