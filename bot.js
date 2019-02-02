@@ -243,7 +243,6 @@ client.on("message", message => {
 ❖-dr ~ <مسح كل الرانكات <لازم تكون رانك البوت فوق كل الرانكات
 ❖-ct <name> ~ انشاء شات
 ❖-cv <name> ~ انشاء رووم فويس
-❖-unbanall ~ لفك البان لجميع الأعظاء دفعة واحدة
 ❖-delet <name> ~ مسح الشات او الرووم فويس
 ❖-ccolors <number> ~ ينشا لك الوان مع كم الوان تبي
 `)
@@ -556,28 +555,6 @@ client.on('message', message => {
        )
    }
 });
-
-client.on('message',async message => {
-  if(message.content === '^unbanall') {
-    var user = message.mentions.users.first();
-    if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('❌|**`ADMINISTRATOR`لا توجد لديك صلاحية `**');
-    if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
-    const guild = message.guild;
-
-  message.guild.fetchBans().then(ba => {
-  ba.forEach(ns => {
-  message.guild.unban(ns);
-  const embed= new Discord.RichEmbed()
-        .setColor("RANDOM")
-        .setDescription(`**✅ Has Been Unban For All**`)
-    .setFooter('Requested by '+message.author.username, message.author.avatarURL)
-  message.channel.sendEmbed(embed);
-  guild.owner.send(`سيرفر : ${guild.name}
-  **تم فك الباند عن الجميع بواسطة** : <@${message.author.id}>`) 
-  });
-  });
-  }
-  });
 
 const adminprefix = "-v";
 const devs = ['349616310734553088','335027415619338240'];
